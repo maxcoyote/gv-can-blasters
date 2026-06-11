@@ -1,0 +1,37 @@
+---
+import { trustChips } from '../data/site';
+---
+
+<section aria-label="Why customers trust us" class="bg-brand-navy text-white">
+  <div class="container-x py-5">
+    <ul class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm sm:text-base">
+      {
+        trustChips.map((chip, i) => (
+          <li class="flex items-center gap-3 font-semibold text-white/90">
+            {i > 0 && (
+              <span aria-hidden="true" class="hidden sm:inline text-brand-sand">
+                ·
+              </span>
+            )}
+            <span class="inline-flex items-center gap-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-4 w-4 text-brand-mint"
+                aria-hidden="true"
+              >
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              {chip}
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

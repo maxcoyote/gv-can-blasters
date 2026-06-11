@@ -1,0 +1,72 @@
+---
+const highlights = [
+  {
+    title: 'Built right here',
+    body: "We're a husband-and-wife team and the Grand Valley has been home for over a decade. You're hiring neighbors, not a franchise.",
+  },
+  {
+    title: 'Commercial-grade rig',
+    body: 'Our trailer was built from the ground up — high-heat pressure washing paired with an eco-friendly wastewater reclamation system.',
+  },
+  {
+    title: 'Old-school values',
+    body: "Hard work, honesty, reliability. If your bins aren't sparkling and fresh when we're done, call us and we'll make it right.",
+  },
+];
+---
+
+<section class="bg-white py-20 sm:py-24">
+  <div class="container-x grid items-center gap-12 lg:grid-cols-2">
+    <div>
+      <p class="eyebrow mb-3">Why Us</p>
+      <h2 class="mb-5">Why Grand Valley Neighbors Choose Us</h2>
+      <p class="mb-6 text-lg text-ink/80">
+        We're a local husband-and-wife team who've called the Grand Valley home
+        for over a decade. We built our commercial-grade trailer from the
+        ground up, pairing high-heat pressure washing with an eco-friendly
+        wastewater reclamation system — so we protect both your property and
+        our Colorado environment.
+      </p>
+      <p class="text-lg text-ink/80">
+        We run on old-school values: hard work, honesty, and reliability. If
+        your bins aren't sparkling and fresh when we're done, just call and
+        we'll make it right.
+      </p>
+
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="#contact" class="btn-primary">Get a Free Quote</a>
+        <a href="#how-it-works" class="btn-secondary">See How It Works</a>
+      </div>
+    </div>
+
+    <ul class="grid gap-4 sm:grid-cols-1">
+      {
+        highlights.map((h) => (
+          <li class="card flex items-start gap-4">
+            <span
+              aria-hidden="true"
+              class="mt-1 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-green/15 text-brand-green"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-5 w-5"
+              >
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            </span>
+            <div>
+              <h3 class="mb-1 text-lg">{h.title}</h3>
+              <p class="text-ink/75">{h.body}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

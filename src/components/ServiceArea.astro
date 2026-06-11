@@ -1,0 +1,47 @@
+---
+import { serviceAreas } from '../data/site';
+---
+
+<section id="service-area" class="bg-brand-sky/30 py-20 sm:py-24">
+  <div class="container-x">
+    <div class="max-w-2xl">
+      <p class="eyebrow mb-3">Service Area</p>
+      <h2 class="mb-4">Proudly Serving the Grand Valley</h2>
+      <p class="text-lg text-ink/80">
+        Locally owned and operated. We cover Grand Junction, Fruita, Palisade,
+        and rotating routes into Clifton and Orchard Mesa.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        serviceAreas.map((area) => (
+          <article class="card h-full">
+            <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-blue/10 text-brand-blue">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-5 w-5"
+                aria-hidden="true"
+              >
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+            </div>
+            <h3 class="mb-2 text-xl">{area.city}</h3>
+            <p class="text-ink/75">{area.blurb}</p>
+          </article>
+        ))
+      }
+    </div>
+
+    <p class="mt-10 text-center text-sm text-ink/65">
+      Don't see your neighborhood? <a href="#contact" class="font-semibold text-brand-blue underline-offset-4 hover:underline">Ask us</a> — we add streets to our routes all the time.
+    </p>
+  </div>
+</section>

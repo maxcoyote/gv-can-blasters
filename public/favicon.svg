@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="g" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#0B1B2B"/>
+      <stop offset="1" stop-color="#142433"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#g)"/>
+  <!-- Trash can (green) -->
+  <rect x="14" y="22" width="14" height="26" rx="2" fill="#2F8F4E"/>
+  <rect x="12" y="19" width="18" height="4" rx="1.5" fill="#2F8F4E"/>
+  <!-- Recycle can (blue) -->
+  <rect x="34" y="22" width="14" height="26" rx="2" fill="#005EE2"/>
+  <rect x="32" y="19" width="18" height="4" rx="1.5" fill="#005EE2"/>
+  <!-- Mesa silhouette -->
+  <path d="M6 50h52v8H6z" fill="#F2C27F"/>
+  <path d="M6 50l8-6h10l4-4h12l4 4h10l4 6z" fill="#F2C27F" opacity="0.85"/>
+</svg>

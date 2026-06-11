@@ -1,0 +1,102 @@
+---
+import { site, nav } from '../data/site';
+---
+
+<header
+  data-scrolled="false"
+  class="site-header sticky top-0 z-40 border-b border-brand-navy/5 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/75"
+>
+  <div class="container-x flex items-center justify-between gap-4 py-1">
+    <a href="#top" class="flex items-center" aria-label={site.name + ' — home'}>
+      <img
+        src="/logo.png"
+        alt={site.name + ' logo'}
+        width="160"
+        height="160"
+        class="site-logo h-32 w-32 sm:h-40 sm:w-40 object-contain"
+        loading="eager"
+        decoding="async"
+      />
+    </a>
+
+    <nav aria-label="Primary" class="hidden lg:block">
+      <ul class="flex items-center gap-7 text-sm font-semibold text-brand-navy">
+        {
+          nav.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class="hover:text-brand-blue transition-colors"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <a
+        href={site.phoneHref}
+        class="hidden md:inline-flex text-sm font-semibold text-brand-navy hover:text-brand-blue transition-colors"
+        aria-label={'Call ' + site.name}
+      >
+        {site.phone}
+      </a>
+      <a href="#contact" class="btn-primary text-sm sm:text-base px-5 py-2.5">
+        Book Now
+      </a>
+    </div>
+  </div>
+
+  <!-- Mobile sub-nav -->
+  <nav aria-label="Mobile" class="lg:hidden border-t border-brand-navy/5 bg-white">
+    <ul class="container-x flex items-center gap-5 overflow-x-auto py-2 text-sm font-semibold text-brand-navy">
+      {
+        nav.map((item) => (
+          <li class="shrink-0">
+            <a
+              href={item.href}
+              class="block py-1 hover:text-brand-blue transition-colors"
+            >
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>
+
+<style>
+  .site-logo {
+    transition: height 220ms ease, width 220ms ease;
+  }
+  .site-header[data-scrolled='true'] .site-logo {
+    height: 3rem;
+    width: 3rem;
+  }
+  @media (min-width: 640px) {
+    .site-header[data-scrolled='true'] .site-logo {
+      height: 3.5rem;
+      width: 3.5rem;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .site-logo {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const header = document.querySelector<HTMLElement>('.site-header');
+  if (header) {
+    const update = () => {
+      header.dataset.scrolled = window.scrollY > 24 ? 'true' : 'false';
+    };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+  }
+</script>

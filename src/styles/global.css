@@ -1,0 +1,97 @@
+@import '@fontsource/archivo/700.css';
+@import '@fontsource/archivo/800.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --brand-blue: #005ee2;
+    --brand-navy: #0b1b2b;
+    --brand-green: #2f8f4e;
+    --brand-mint: #aaddb7;
+    --brand-sky: #a5d9ec;
+    --brand-sand: #f2c27f;
+    --ink: #142433;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-white font-sans text-ink antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display tracking-tight text-brand-navy;
+  }
+
+  h1 {
+    @apply text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05];
+  }
+
+  h2 {
+    @apply text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight;
+  }
+
+  h3 {
+    @apply text-xl sm:text-2xl font-bold;
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand-blue ring-offset-2 ring-offset-white;
+  }
+
+  /* Account for the sticky header when jumping to anchors */
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-base font-semibold transition will-change-transform active:scale-[0.98];
+    min-height: 48px;
+  }
+
+  .btn-primary {
+    @apply btn bg-brand-blue text-white hover:bg-brand-navy;
+  }
+
+  .btn-secondary {
+    @apply btn bg-white text-brand-navy ring-1 ring-brand-navy/15 hover:ring-brand-navy/40;
+  }
+
+  .btn-accent {
+    @apply btn bg-brand-green text-white hover:brightness-110;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-brand-navy ring-1 ring-brand-navy/10 shadow-sm;
+  }
+
+  .card {
+    @apply rounded-xl2 bg-white p-6 shadow-card ring-1 ring-brand-navy/5;
+  }
+
+  .eyebrow {
+    @apply text-sm font-semibold uppercase tracking-[0.18em] text-brand-blue;
+  }
+}
