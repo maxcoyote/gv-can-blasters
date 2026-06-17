@@ -94,26 +94,21 @@ export const services = [
 export const howItWorks = [
   {
     n: '01',
-    title: 'Curbside pickup & inspection',
-    body: 'We pull up right after your trash truck and grab your bin straight from the curb, checking the built-up grime, residue, and odor that collect over months of use.',
+    title: 'Curbside pickup & prep',
+    body: 'We pull up right after your trash truck and grab your bin straight from the curb, then clear out leftover trash, leaves, and stuck-on debris so the deep clean can reach every surface.',
   },
   {
     n: '02',
-    title: 'Clear out loose debris',
-    body: 'Before any washing begins, we remove leftover trash, leaves, and stuck-on debris so the deep clean can reach every surface.',
-  },
-  {
-    n: '03',
     title: 'Hot, high-pressure wash',
     body: 'Powerful jets of hot water (up to ⚠️ [temp]°F) scour the inside and outside of the can, blasting away baked-on buildup, bacteria, and grime — the part that earns us the "Can Blasters" name.',
   },
   {
-    n: '04',
+    n: '03',
     title: 'Sanitize & deodorize',
     body: "We finish with an eco-friendly deodorizer that kills odor-causing bacteria and leaves your bin smelling clean instead of like last week's garbage.",
   },
   {
-    n: '05',
+    n: '04',
     title: 'Returned fresh & ready',
     body: "Your clean, sanitized can goes right back to the curb — or wherever you'd like it — and the dirty water leaves with us in our reclamation tank. Cleaner cans, less odor, fewer germs.",
   },

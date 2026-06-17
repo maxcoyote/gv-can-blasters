@@ -13,37 +13,9 @@ import { howItWorks } from '../data/site';
       </p>
     </div>
 
-    {/* TODO: replace with Tyler's How It Works video embed when delivered (MP4/YouTube/Vimeo) */}
-    <figure class="mt-10">
-      <div
-        class="relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-xl2 bg-brand-navy/5 ring-1 ring-brand-navy/10"
-        aria-label="How It Works video coming soon"
-      >
-        <div class="flex flex-col items-center gap-3 text-center text-brand-navy/70">
-          <span
-            aria-hidden="true"
-            class="inline-flex h-16 w-16 items-center justify-center rounded-full bg-brand-blue/10 text-brand-blue"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              class="h-7 w-7"
-            >
-              <path d="M8 5.14v13.72a1 1 0 0 0 1.54.84l10.4-6.86a1 1 0 0 0 0-1.68L9.54 4.3A1 1 0 0 0 8 5.14Z" />
-            </svg>
-          </span>
-          <p class="font-display text-base font-bold sm:text-lg">
-            How It Works video coming soon
-          </p>
-          <p class="text-sm text-brand-navy/60">
-            Watch the full process from curb to clean.
-          </p>
-        </div>
-      </div>
-    </figure>
+    {/* Tyler's How It Works video will be embedded here once delivered (MP4/YouTube/Vimeo). */}
 
-    <ol class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <ol class="mt-12 grid gap-6 sm:grid-cols-2">
       {
         howItWorks.map((step) => (
           <li class="card relative flex flex-col">

@@ -17,7 +17,7 @@ import { site, nav } from '../data/site';
 
 <header
   data-site-header
-  class="site-header sticky top-0 z-40 border-b border-brand-navy/5 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/75"
+  class="site-header fixed inset-x-0 top-0 z-40 border-b border-brand-navy/5 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/75"
 >
   <div class="container-x flex items-center justify-between gap-4 py-1">
     <a href="#top" class="flex items-center" aria-label={site.name + ' — home'}>
@@ -82,9 +82,18 @@ import { site, nav } from '../data/site';
   </nav>
 </header>
 
+<!--
+  The header is position:fixed (out of normal flow) so shrinking it never
+  reflows the page. This spacer reserves the header's *tall* height so content
+  starts below it; its height is measured in JS to stay correct across
+  breakpoints (the mobile sub-nav makes the height vary). Tinted to match the
+  hero's top so the brief reveal while the header shrinks blends in.
+-->
+<div id="header-spacer" aria-hidden="true" class="bg-brand-sky/40"></div>
+
 <style>
-  /* Ease only the specific properties that change — never height of an
-     element that reflows the page. */
+  /* Ease only the specific properties that change — the header is out of flow,
+     so even the logo's height/width change can't reflow the document. */
   .site-header {
     transition:
       background-color 200ms ease,
@@ -110,6 +119,12 @@ import { site, nav } from '../data/site';
     }
   }
 
+  /* While measuring the tall height, kill transitions so offsetHeight is exact. */
+  .site-header.is-measuring,
+  .site-header.is-measuring .site-logo {
+    transition: none;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .site-header,
     .site-logo {
@@ -121,8 +136,26 @@ import { site, nav } from '../data/site';
 <script>
   const header = document.querySelector<HTMLElement>('[data-site-header]');
   const sentinel = document.getElementById('nav-sentinel');
+  const spacer = document.getElementById('header-spacer');
 
-  if (header) {
+  if (header && spacer) {
+    // Reserve the header's *tall* (un-scrolled) height in the document flow.
+    const syncSpacer = () => {
+      header.classList.add('is-measuring');
+      const wasScrolled = header.classList.contains('is-scrolled');
+      header.classList.remove('is-scrolled');
+      spacer.style.height = header.offsetHeight + 'px';
+      if (wasScrolled) header.classList.add('is-scrolled');
+      header.classList.remove('is-measuring');
+    };
+    syncSpacer();
+    // Re-measure once webfonts settle, in case they nudge the nav height.
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(syncSpacer);
+    }
+    window.addEventListener('load', syncSpacer);
+
+    // Toggle the scrolled state from the sentinel — no scrollY threshold to thrash.
     if (sentinel && 'IntersectionObserver' in window) {
       const io = new IntersectionObserver(
         ([entry]) => {
@@ -132,8 +165,8 @@ import { site, nav } from '../data/site';
       );
       io.observe(sentinel);
     } else {
-      // Fallback for environments without IntersectionObserver: hysteresis +
-      // rAF-coalesced passive scroll listener so it still can't thrash.
+      // Fallback without IntersectionObserver: hysteresis + rAF-coalesced
+      // passive scroll listener so it still can't thrash.
       let ticking = false;
       const update = () => {
         const y = window.scrollY;
@@ -153,5 +186,12 @@ import { site, nav } from '../data/site';
       );
       update();
     }
+
+    // Keep the spacer correct across breakpoint changes.
+    let resizeRaf = 0;
+    window.addEventListener('resize', () => {
+      if (resizeRaf) cancelAnimationFrame(resizeRaf);
+      resizeRaf = requestAnimationFrame(syncSpacer);
+    });
   }
 </script>
