@@ -2,8 +2,21 @@
 import { site, nav } from '../data/site';
 ---
 
+<!--
+  Zero-height sentinel anchored to the top of the document. The header's
+  "scrolled" state is driven by whether this element is in view (via
+  IntersectionObserver) rather than a scrollY threshold — so it can't thrash
+  frame-to-frame the way a single-threshold scroll handler does.
+-->
+<div
+  id="nav-sentinel"
+  aria-hidden="true"
+  style="position:absolute;top:0;left:0;height:24px;width:1px;pointer-events:none;"
+>
+</div>
+
 <header
-  data-scrolled="false"
+  data-site-header
   class="site-header sticky top-0 z-40 border-b border-brand-navy/5 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/75"
 >
   <div class="container-x flex items-center justify-between gap-4 py-1">
@@ -70,20 +83,35 @@ import { site, nav } from '../data/site';
 </header>
 
 <style>
-  .site-logo {
-    transition: height 220ms ease, width 220ms ease;
+  /* Ease only the specific properties that change — never height of an
+     element that reflows the page. */
+  .site-header {
+    transition:
+      background-color 200ms ease,
+      box-shadow 200ms ease;
   }
-  .site-header[data-scrolled='true'] .site-logo {
+  .site-logo {
+    transition:
+      height 220ms ease,
+      width 220ms ease;
+  }
+
+  .site-header.is-scrolled {
+    box-shadow: 0 6px 24px -12px rgba(11, 27, 43, 0.25);
+  }
+  .site-header.is-scrolled .site-logo {
     height: 3rem;
     width: 3rem;
   }
   @media (min-width: 640px) {
-    .site-header[data-scrolled='true'] .site-logo {
+    .site-header.is-scrolled .site-logo {
       height: 3.5rem;
       width: 3.5rem;
     }
   }
+
   @media (prefers-reduced-motion: reduce) {
+    .site-header,
     .site-logo {
       transition: none;
     }
@@ -91,12 +119,39 @@ import { site, nav } from '../data/site';
 </style>
 
 <script>
-  const header = document.querySelector<HTMLElement>('.site-header');
+  const header = document.querySelector<HTMLElement>('[data-site-header]');
+  const sentinel = document.getElementById('nav-sentinel');
+
   if (header) {
-    const update = () => {
-      header.dataset.scrolled = window.scrollY > 24 ? 'true' : 'false';
-    };
-    update();
-    window.addEventListener('scroll', update, { passive: true });
+    if (sentinel && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver(
+        ([entry]) => {
+          header.classList.toggle('is-scrolled', !entry.isIntersecting);
+        },
+        { rootMargin: '0px', threshold: 0 }
+      );
+      io.observe(sentinel);
+    } else {
+      // Fallback for environments without IntersectionObserver: hysteresis +
+      // rAF-coalesced passive scroll listener so it still can't thrash.
+      let ticking = false;
+      const update = () => {
+        const y = window.scrollY;
+        if (y > 80) header.classList.add('is-scrolled');
+        else if (y < 40) header.classList.remove('is-scrolled');
+        ticking = false;
+      };
+      window.addEventListener(
+        'scroll',
+        () => {
+          if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(update);
+          }
+        },
+        { passive: true }
+      );
+      update();
+    }
   }
 </script>

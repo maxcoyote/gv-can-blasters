@@ -1,21 +1,51 @@
 ---
-import { steps } from '../data/site';
+import { howItWorks } from '../data/site';
 ---
 
 <section id="how-it-works" class="bg-brand-mint/30 py-20 sm:py-24">
   <div class="container-x">
     <div class="max-w-2xl">
       <p class="eyebrow mb-3">How It Works</p>
-      <h2 class="mb-4">Spotless cans in three easy steps</h2>
+      <h2 class="mb-4">How we get your cans truly clean</h2>
       <p class="text-lg text-ink/75">
-        No contracts, no mess, no need to be home. Book online and your cans get
-        cleaned right after your normal pickup day.
+        Booking takes about a minute — after that, here's exactly what happens
+        to your cans. No contracts, and you never need to be home.
       </p>
     </div>
 
-    <ol class="mt-12 grid gap-6 md:grid-cols-3">
+    {/* TODO: replace with Tyler's How It Works video embed when delivered (MP4/YouTube/Vimeo) */}
+    <figure class="mt-10">
+      <div
+        class="relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-xl2 bg-brand-navy/5 ring-1 ring-brand-navy/10"
+        aria-label="How It Works video coming soon"
+      >
+        <div class="flex flex-col items-center gap-3 text-center text-brand-navy/70">
+          <span
+            aria-hidden="true"
+            class="inline-flex h-16 w-16 items-center justify-center rounded-full bg-brand-blue/10 text-brand-blue"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="h-7 w-7"
+            >
+              <path d="M8 5.14v13.72a1 1 0 0 0 1.54.84l10.4-6.86a1 1 0 0 0 0-1.68L9.54 4.3A1 1 0 0 0 8 5.14Z" />
+            </svg>
+          </span>
+          <p class="font-display text-base font-bold sm:text-lg">
+            How It Works video coming soon
+          </p>
+          <p class="text-sm text-brand-navy/60">
+            Watch the full process from curb to clean.
+          </p>
+        </div>
+      </div>
+    </figure>
+
+    <ol class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {
-        steps.map((step) => (
+        howItWorks.map((step) => (
           <li class="card relative flex flex-col">
             <span
               aria-hidden="true"

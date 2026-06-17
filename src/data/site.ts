@@ -89,21 +89,33 @@ export const services = [
   // ⚠️ Confirm final service list & prices with Tyler — structure supports a 4th card if needed.
 ] as const;
 
-export const steps = [
+// The cleaning process, mirroring Tyler's "How It Works" video storyboard.
+// Booking is intentionally NOT a step here — it's folded into the section intro.
+export const howItWorks = [
   {
     n: '01',
-    title: 'Book online',
-    body: 'Tell us your address and pickup day. Takes about a minute.',
+    title: 'Curbside pickup & inspection',
+    body: 'We pull up right after your trash truck and grab your bin straight from the curb, checking the built-up grime, residue, and odor that collect over months of use.',
   },
   {
     n: '02',
-    title: 'We come to you',
-    body: 'We service your cans curbside, right after pickup day — no need to be home.',
+    title: 'Clear out loose debris',
+    body: 'Before any washing begins, we remove leftover trash, leaves, and stuck-on debris so the deep clean can reach every surface.',
   },
   {
     n: '03',
-    title: 'Blast, sanitize, deodorize',
-    body: 'High-heat wash up to ⚠️ [temp]°F, then we haul the dirty water away with us. Eco-safe and spotless.',
+    title: 'Hot, high-pressure wash',
+    body: 'Powerful jets of hot water (up to ⚠️ [temp]°F) scour the inside and outside of the can, blasting away baked-on buildup, bacteria, and grime — the part that earns us the "Can Blasters" name.',
+  },
+  {
+    n: '04',
+    title: 'Sanitize & deodorize',
+    body: "We finish with an eco-friendly deodorizer that kills odor-causing bacteria and leaves your bin smelling clean instead of like last week's garbage.",
+  },
+  {
+    n: '05',
+    title: 'Returned fresh & ready',
+    body: "Your clean, sanitized can goes right back to the curb — or wherever you'd like it — and the dirty water leaves with us in our reclamation tank. Cleaner cans, less odor, fewer germs.",
   },
 ] as const;
 
