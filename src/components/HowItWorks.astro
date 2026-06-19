@@ -14,19 +14,37 @@ import { howItWorks } from '../data/site';
     </div>
 
     {/* Tyler's "good enough for now" demo cut — swap the <source src> + poster when the reshoot lands. */}
-    <div class="mt-10 aspect-video w-full overflow-hidden rounded-2xl bg-brand-navy/5 shadow-sm">
+    <div
+      class="group relative mt-10 aspect-video w-full overflow-hidden rounded-2xl bg-brand-navy/5 shadow-sm"
+      data-video-wrap
+    >
       <video
         class="h-full w-full object-cover"
-        controls
         playsinline
         preload="none"
         poster="/media/how-it-works-poster.jpg"
         aria-label="Grand Valley Can Blasters cleaning process video"
+        data-video
       >
         <source src="/media/how-it-works.mp4" type="video/mp4" />
         Your browser doesn't support embedded video.
         <a href="/media/how-it-works.mp4">Download the video</a> instead.
       </video>
+
+      <button
+        type="button"
+        class="absolute inset-0 flex items-center justify-center bg-brand-navy/30 transition-colors duration-300 hover:bg-brand-navy/40 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-brand-blue/60"
+        aria-label="Play the Grand Valley Can Blasters cleaning process video"
+        data-video-play
+      >
+        <span
+          class="flex h-20 w-20 items-center justify-center rounded-full bg-brand-blue text-white shadow-lg ring-4 ring-white/30 transition-transform duration-300 group-hover:scale-110"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" class="ml-1 h-8 w-8" aria-hidden="true">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        </span>
+      </button>
     </div>
 
     <ol class="mt-12 grid gap-6 sm:grid-cols-2">
@@ -51,3 +69,17 @@ import { howItWorks } from '../data/site';
     </div>
   </div>
 </section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-video-wrap]').forEach((wrap) => {
+    const video = wrap.querySelector<HTMLVideoElement>('[data-video]');
+    const playBtn = wrap.querySelector<HTMLButtonElement>('[data-video-play]');
+    if (!video || !playBtn) return;
+
+    playBtn.addEventListener('click', () => {
+      video.setAttribute('controls', '');
+      playBtn.remove();
+      void video.play();
+    });
+  });
+</script>
