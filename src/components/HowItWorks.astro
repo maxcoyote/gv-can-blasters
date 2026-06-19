@@ -13,7 +13,21 @@ import { howItWorks } from '../data/site';
       </p>
     </div>
 
-    {/* Tyler's How It Works video will be embedded here once delivered (MP4/YouTube/Vimeo). */}
+    {/* Tyler's "good enough for now" demo cut — swap the <source src> + poster when the reshoot lands. */}
+    <div class="mt-10 aspect-video w-full overflow-hidden rounded-2xl bg-brand-navy/5 shadow-sm">
+      <video
+        class="h-full w-full object-cover"
+        controls
+        playsinline
+        preload="none"
+        poster="/media/how-it-works-poster.jpg"
+        aria-label="Grand Valley Can Blasters cleaning process video"
+      >
+        <source src="/media/how-it-works.mp4" type="video/mp4" />
+        Your browser doesn't support embedded video.
+        <a href="/media/how-it-works.mp4">Download the video</a> instead.
+      </video>
+    </div>
 
     <ol class="mt-12 grid gap-6 sm:grid-cols-2">
       {

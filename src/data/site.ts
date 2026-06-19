@@ -100,7 +100,7 @@ export const howItWorks = [
   {
     n: '02',
     title: 'Hot, high-pressure wash',
-    body: 'Powerful jets of hot water (up to ⚠️ [temp]°F) scour the inside and outside of the can, blasting away baked-on buildup, bacteria, and grime — the part that earns us the "Can Blasters" name.',
+    body: 'Powerful jets of hot water (up to 190°F) scour the inside and outside of the can, blasting away baked-on buildup, bacteria, and grime — the part that earns us the "Can Blasters" name.',
   },
   {
     n: '03',
