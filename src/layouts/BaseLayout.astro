@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import { site, faqs } from '../data/site';
+import { site, faqs, pricingTiers } from '../data/site';
 
 export interface Props {
   title?: string;
@@ -38,6 +38,13 @@ const localBusinessSchema = {
     { '@type': 'City', name: 'Palisade', containedInPlace: 'Colorado' },
   ],
   openingHoursSpecification: site.openingHoursSchema,
+  // Derived from pricingTiers so prices stay single-sourced in site.ts.
+  makesOffer: pricingTiers.map((tier) => ({
+    '@type': 'Offer',
+    name: `${tier.name} bin cleaning`,
+    price: tier.price.replace(/[^0-9.]/g, ''),
+    priceCurrency: 'USD',
+  })),
   sameAs: [site.social.facebook, site.social.instagram].filter(Boolean),
 };
 

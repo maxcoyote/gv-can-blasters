@@ -27,7 +27,7 @@ export const site = {
   hours: 'Mon–Sat · By appointment', // ⚠️ placeholder
   openingHoursSchema: ['Mo-Sa 08:00-17:00'], // ⚠️ placeholder
 
-  priceRange: '$$', // ⚠️ placeholder
+  priceRange: '$25–$45',
 
   social: {
     facebook: '', // ⚠️ TBD
@@ -71,22 +71,22 @@ export const services = [
   {
     title: 'Recurring Residential Cleaning',
     body: 'Regular trash & recycle can cleaning on a schedule that fits your pickup day. We show up right after the truck does — you do nothing.',
-    price: '⚠️ Pricing TBD',
+    price: 'From $25/mo',
     featured: true,
   },
   {
     title: 'One-Time / First Clean',
     body: 'A deep blast for badly built-up bins, move-in/move-out resets, or a one-off refresh before company comes over.',
-    price: '⚠️ Pricing TBD',
+    price: 'From $45',
     featured: false,
   },
   {
     title: 'Recycle Bin Cleaning',
     body: 'Recycle cans get gross too — sticky cans, broken bottles, fruit flies. We sanitize and deodorize them right alongside the trash bin.',
-    price: '⚠️ Pricing TBD',
+    price: 'Included with any plan',
     featured: false,
   },
-  // ⚠️ Confirm final service list & prices with Tyler — structure supports a 4th card if needed.
+  // Structure supports a 4th card if needed.
 ] as const;
 
 // The cleaning process, mirroring Tyler's "How It Works" video storyboard.
@@ -124,11 +124,11 @@ export const trustChips = [
 export const pricingTiers = [
   {
     name: 'Monthly',
-    price: '⚠️ TBD',
+    price: '$25/mo',
     cadence: 'Cleaned every month',
     perks: [
-      'Trash can included',
-      'Recycle can optional add-on',
+      'Covers up to 2 cans (trash + recycle)',
+      '+$10 per additional can',
       'Cleaned right after your pickup day',
       'Cancel anytime',
     ],
@@ -137,24 +137,25 @@ export const pricingTiers = [
   },
   {
     name: 'Quarterly',
-    price: '⚠️ TBD',
-    cadence: 'Cleaned every 3 months',
+    price: '$35',
+    cadence: 'Per cleaning · every 3 months',
     perks: [
-      'Great for low-volume households',
+      'Covers up to 2 cans (trash + recycle)',
+      '+$10 per additional can',
       'Same hot-water sanitize & deodorize',
-      'Predictable, scheduled service',
+      'Great for low-volume households',
     ],
     cta: 'Request a Quote',
     featured: false,
   },
   {
     name: 'One-Time',
-    price: '⚠️ TBD',
+    price: '$45',
     cadence: 'A single deep clean',
     perks: [
-      'No commitment',
-      'Perfect for move-ins or seasonal resets',
-      'Add recycle bin for a small fee',
+      'Covers up to 2 cans (trash + recycle)',
+      '+$10 per additional can',
+      'No commitment — perfect for move-ins or seasonal resets',
     ],
     cta: 'Request a Quote',
     featured: false,
@@ -168,7 +169,7 @@ export const faqs = [
   },
   {
     q: 'Do you clean both trash and recycle bins?',
-    a: 'Yes. Recycle cans actually get pretty grim — sticky residue, broken glass, fruit flies — so we sanitize and deodorize them the same way we do trash cans. You can add a recycle bin to any service.',
+    a: 'Yes. Recycle cans actually get pretty grim — sticky residue, broken glass, fruit flies — so we sanitize and deodorize them the same way we do trash cans. Your recycle bin is included in the base price: every plan covers up to two cans (trash + recycle), and additional cans are just $10 each.',
   },
   {
     q: 'What happens to the dirty water?',
@@ -180,7 +181,7 @@ export const faqs = [
   },
   {
     q: 'How much does it cost?',
-    a: '⚠️ Pricing is being finalized. Request a quote with your address and pickup day and we\'ll send back exact pricing within one business day.',
+    a: 'Pricing is flat across the Grand Valley: $25/month for recurring monthly service, $35 per cleaning on a quarterly schedule, or $45 for a one-time deep clean. Each plan covers up to two cans (your trash and recycle), and extra cans are just $10 each. Most households have two cans, so the base price is usually your total. Request a quote with your address and pickup day and we\'ll confirm.',
   },
   {
     q: 'Do I need to be home?',
