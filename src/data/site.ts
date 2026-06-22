@@ -9,8 +9,8 @@ export const site = {
     'Professional trash & recycle bin cleaning in the Grand Valley. Hot-water, eco-friendly sanitizing that kills odor and bacteria. Serving Grand Junction, Fruita & Palisade.',
 
   // ⚠️ NAP — confirm with Tyler before launch
-  phone: '(970) 555-0123', // ⚠️ placeholder
-  phoneHref: 'tel:+19705550123', // ⚠️ placeholder
+  phone: '(970) 250-1125',
+  phoneHref: 'tel:+19702501125',
   email: 'hello@grandvalleycanblasters.com', // ⚠️ placeholder
   emailHref: 'mailto:hello@grandvalleycanblasters.com', // ⚠️ placeholder
 
