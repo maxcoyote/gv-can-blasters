@@ -23,9 +23,8 @@ export const site = {
     country: 'US',
   },
 
-  // ⚠️ Hours TBD
-  hours: 'Mon–Sat · By appointment', // ⚠️ placeholder
-  openingHoursSchema: ['Mo-Sa 08:00-17:00'], // ⚠️ placeholder
+  hours: 'Mon-Fri By Appointment',
+  openingHoursSchema: ['Mo-Fr'],
 
   priceRange: '$25–$45',
 
